@@ -1,4 +1,4 @@
-const ORBIT_DURATIONS = [8, 10.5, 13];
+const ORBIT_DURATIONS = [3.2, 3.5, 3.8];
 const ORBIT_PATH = 'M 20 200 a 180 62 0 1 0 360 0 a 180 62 0 1 0 -360 0';
 const ORBIT_COLORS = ['#2563EB', '#0EA5E9', '#D4A017'];
 
@@ -25,6 +25,7 @@ export function AtomOrbitSvg({ className = '' }: { className?: string }) {
                   path={ORBIT_PATH}
                   dur={`${ORBIT_DURATIONS[index]}s`}
                   begin={`-${(electron * ORBIT_DURATIONS[index]) / 2}s`}
+                  calcMode="paced"
                   repeatCount="indefinite"
                 />
               </circle>
@@ -40,7 +41,7 @@ export function DnaHelixSvg({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 100 360" aria-hidden={true} className={className}>
       {Array.from({ length: 18 }, (_, index) => {
-        const delayStyle = { animationDelay: `-${index * 0.28}s` };
+        const delayStyle = { animationDelay: `-${((index * 3.5) / 18).toFixed(3)}s` };
         const y = 10 + index * 20;
         return (
           <g key={index}>
