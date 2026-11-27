@@ -36,31 +36,3 @@ export function AtomOrbitSvg({ className = '' }: { className?: string }) {
     </svg>
   );
 }
-
-export function DnaHelixSvg({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 360" aria-hidden={true} className={className}>
-      {Array.from({ length: 18 }, (_, index) => {
-        const delayStyle = { animationDelay: `-${((index * 3.5) / 18).toFixed(3)}s` };
-        const y = 10 + index * 20;
-        return (
-          <g key={index}>
-            <line
-              className="dna-rung"
-              style={delayStyle}
-              x1="14"
-              x2="86"
-              y1={y}
-              y2={y}
-              stroke={index % 2 ? '#D4A017' : '#94A3B8'}
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <circle className="dna-a" style={delayStyle} cx="50" cy={y} r="7" fill="#2563EB" />
-            <circle className="dna-b" style={delayStyle} cx="50" cy={y} r="7" fill="#0EA5E9" />
-          </g>
-        );
-      })}
-    </svg>
-  );
-}

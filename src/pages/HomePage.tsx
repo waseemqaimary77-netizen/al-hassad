@@ -1,5 +1,5 @@
 import { IconArrowLeft } from '../components/Icons';
-import { AtomOrbitSvg, DnaHelixSvg } from '../components/ScienceMotion';
+import { AtomOrbitSvg } from '../components/ScienceMotion';
 import { Credits } from '../components/ui';
 import { useAppStore } from '../context/AppStoreContext';
 import { ASSETS } from '../data/constants';
@@ -20,10 +20,6 @@ export function HomePage() {
           alt={settings.presenter}
           className="presenter-img absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2"
         />
-      </div>
-
-      <div className="pointer-events-none absolute inset-y-0 left-[40vw] hidden w-[13vw] flex-col items-center justify-center lg:flex">
-        <DnaHelixSvg className="h-[62dvh] w-full" />
       </div>
 
       <header className="relative z-10 flex items-center justify-between gap-4 p-4 md:px-10">
