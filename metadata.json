@@ -1,0 +1,6 @@
+{
+  "name": "أولمبياد الحصاد للعلوم",
+  "description": "تطبيق مسابقات وبطولات العلوم لمدارس الحصاد المقدسي — إدارة الفرق، بنك الأسئلة، القرعة التفاعلية، ولوحة المواجهات المباشرة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
