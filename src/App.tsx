@@ -8,6 +8,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { HomePage } from './pages/HomePage';
 import { MatchesPage } from './pages/MatchesPage';
 import { NewMatchPage } from './pages/NewMatchPage';
+import { PlannerPage } from './pages/PlannerPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { StartMatchPage } from './pages/StartMatchPage';
 import { TeamsPage } from './pages/TeamsPage';
@@ -22,6 +23,7 @@ function AppRoutes() {
   if (page === 'board') return <BoardPage key={param ?? ''} id={param ?? ''} />;
 
   const adminPages: Record<string, ReactNode> = {
+    planner: <PlannerPage />,
     tournaments: <TournamentsPage />,
     classes: <ClassesPage />,
     teams: <TeamsPage />,

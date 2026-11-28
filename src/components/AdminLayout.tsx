@@ -3,6 +3,7 @@ import { useAppStore } from '../context/AppStoreContext';
 import { ASSETS } from '../data/constants';
 import {
   IconBank,
+  IconBracket,
   IconDashboard,
   IconSchool,
   IconSettings,
@@ -14,6 +15,7 @@ import { Credits, Notice } from './ui';
 
 export const ADMIN_NAV_ITEMS = [
   { path: 'dashboard', label: 'لوحة التحكم', Icon: IconDashboard },
+  { path: 'planner', label: 'تخطيط المواجهات والقوالب', Icon: IconBracket },
   { path: 'tournaments', label: 'إدارة البطولات', Icon: IconTrophy },
   { path: 'classes', label: 'الصفوف والشعب', Icon: IconSchool },
   { path: 'teams', label: 'الفرق والطلاب', Icon: IconUsers },

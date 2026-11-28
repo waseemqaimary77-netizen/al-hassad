@@ -5,6 +5,7 @@ import {
   ArrowUp,
   Atom,
   BookOpen,
+  BookmarkPlus,
   Building2,
   Check,
   Clock,
@@ -13,6 +14,7 @@ import {
   Download,
   Eye,
   FlaskConical,
+  GitBranch,
   Home,
   Layers,
   LayoutDashboard,
@@ -22,10 +24,13 @@ import {
   Pencil,
   Play,
   Plus,
+  Printer,
   Rewind,
   RotateCcw,
+  Search,
   Settings,
   Shapes,
+  Shuffle,
   Star,
   Swords,
   Trash2,
@@ -50,11 +55,14 @@ export const IconTrash = withEm(Trash2);
 export const IconClock = withEm(Clock);
 export const IconSwords = withEm(Swords);
 export const IconStar = withEm(Star);
+export const IconShuffle = withEm(Shuffle);
 export const IconShapes = withEm(Shapes);
 export const IconSettings = withEm(Settings);
+export const IconSearch = withEm(Search);
 export const IconSchool = withEm(Building2);
 export const IconReset = withEm(RotateCcw);
 export const IconRewind = withEm(Rewind);
+export const IconPrinter = withEm(Printer);
 export const IconPlus = withEm(Plus);
 export const IconPlay = withEm(Play);
 export const IconPencil = withEm(Pencil);
@@ -64,12 +72,14 @@ export const IconLock = withEm(Lock);
 export const IconDashboard = withEm(LayoutDashboard);
 export const IconLayers = withEm(Layers);
 export const IconHome = withEm(Home);
+export const IconBracket = withEm(GitBranch);
 export const IconChemistry = withEm(FlaskConical);
 export const IconEye = withEm(Eye);
 export const IconDownload = withEm(Download);
 export const IconBiology = withEm(Dna);
 export const IconCrown = withEm(Crown);
 export const IconCheck = withEm(Check);
+export const IconBookmarkPlus = withEm(BookmarkPlus);
 export const IconBank = withEm(BookOpen);
 export const IconPhysics = withEm(Atom);
 export const IconArrowUp = withEm(ArrowUp);

@@ -108,6 +108,48 @@ export interface Bracket {
   entrants: Entrant[];
 }
 
+export type BracketPlanMode = 'elimination' | 'round_robin';
+
+export interface PlanMatchSlot {
+  id: string;
+  round: number;
+  index: number;
+  aName?: string;
+  bName?: string;
+  isThirdPlace?: boolean;
+  winnerSide?: 0 | 1 | null;
+  matchId?: string;
+  scheduledAt?: string;
+  notes?: string;
+}
+
+export interface TournamentPlan {
+  id: string;
+  title: string;
+  description?: string;
+  category: CategoryId;
+  matchType: MatchType;
+  mode: BracketPlanMode;
+  includeThirdPlace: boolean;
+  participants: string[];
+  roundNames: string[];
+  slots: PlanMatchSlot[];
+  createdAt: number;
+}
+
+export interface PlanTemplate {
+  id: string;
+  title: string;
+  description: string;
+  category: CategoryId;
+  matchType: MatchType;
+  mode: BracketPlanMode;
+  includeThirdPlace: boolean;
+  participants: string[];
+  roundNames: string[];
+  isBuiltIn?: boolean;
+}
+
 export interface Settings {
   school: string;
   organizer: string;
@@ -119,11 +161,14 @@ export interface Settings {
 
 export interface AppState {
   version: number;
+  questionBankVersion?: number;
   sections: Section[];
   teams: Team[];
   questions: Question[];
   matches: Match[];
   orders: Record<string, string[]>;
+  plans?: TournamentPlan[];
+  planTemplates?: PlanTemplate[];
   settings: Settings;
 }
 
@@ -134,7 +179,12 @@ export type Action =
   | { type: 'team/remove'; id: string }
   | { type: 'question/save'; question: Question }
   | { type: 'question/remove'; id: string }
+  | { type: 'bank/restoreOfficial' }
   | { type: 'order/set'; stage: string; order: string[] }
+  | { type: 'plan/save'; plan: TournamentPlan }
+  | { type: 'plan/remove'; id: string }
+  | { type: 'template/save'; template: PlanTemplate }
+  | { type: 'template/remove'; id: string }
   | {
       type: 'match/quick';
       id: string;

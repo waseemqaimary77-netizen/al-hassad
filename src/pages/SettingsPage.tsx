@@ -162,7 +162,7 @@ export function SettingsPage() {
 
           <Button variant="danger" onClick={() => setConfirmReset(true)}>
             <IconReset />
-            إعادة البيانات التجريبية
+            إعادة البيانات الافتراضية
           </Button>
         </div>
       </Card>
@@ -186,14 +186,14 @@ export function SettingsPage() {
 
       <ConfirmModal
         open={confirmReset}
-        title="إعادة البيانات التجريبية"
-        message="إعادة البيانات التجريبية وحذف كل التعديلات؟"
+        title="إعادة البيانات الافتراضية"
+        message="إعادة البيانات الافتراضية وبنك الأسئلة الرسمي وحذف كل التعديلات؟"
         confirmLabel="إعادة التعيين"
         onCancel={() => setConfirmReset(false)}
         onConfirm={() => {
           const next = dispatch({ type: 'state/reset' });
           setForm(next.settings);
-          setStatusMessage({ tone: 'green', text: 'أعيدت البيانات التجريبية.' });
+          setStatusMessage({ tone: 'green', text: 'أعيدت البيانات الافتراضية وبنك الأسئلة الرسمي.' });
           setConfirmReset(false);
         }}
       />

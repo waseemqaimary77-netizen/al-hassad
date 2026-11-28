@@ -7,7 +7,7 @@ import {
   getGradeCategory,
   getSubjectName,
 } from '../data/constants';
-import { createDefaultState } from '../data/defaultQuestions';
+import { DEFAULT_QUESTIONS, createDefaultState } from '../data/defaultQuestions';
 import type {
   Action,
   AppState,
@@ -486,11 +486,52 @@ export function appReducer(state: AppState, action: Action): AppState {
         questions: state.questions.filter((q) => q.id !== action.id),
       };
 
+    case 'bank/restoreOfficial':
+      return {
+        ...state,
+        questionBankVersion: 2,
+        questions: DEFAULT_QUESTIONS.map((q) => ({ ...q })),
+      };
+
     case 'order/set':
       if (state.matches.some((m) => m.slot?.stage === action.stage)) return state;
       return {
         ...state,
         orders: { ...state.orders, [action.stage]: action.order },
+      };
+
+    case 'plan/save': {
+      const plans = state.plans ?? [];
+      const exists = plans.some((p) => p.id === action.plan.id);
+      return {
+        ...state,
+        plans: exists
+          ? plans.map((p) => (p.id === action.plan.id ? action.plan : p))
+          : [...plans, action.plan],
+      };
+    }
+
+    case 'plan/remove':
+      return {
+        ...state,
+        plans: (state.plans ?? []).filter((p) => p.id !== action.id),
+      };
+
+    case 'template/save': {
+      const templates = state.planTemplates ?? [];
+      const exists = templates.some((t) => t.id === action.template.id);
+      return {
+        ...state,
+        planTemplates: exists
+          ? templates.map((t) => (t.id === action.template.id ? action.template : t))
+          : [...templates, action.template],
+      };
+    }
+
+    case 'template/remove':
+      return {
+        ...state,
+        planTemplates: (state.planTemplates ?? []).filter((t) => t.id !== action.id),
       };
 
     case 'match/quick': {

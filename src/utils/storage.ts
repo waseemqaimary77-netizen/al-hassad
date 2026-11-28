@@ -1,7 +1,8 @@
-import { createDefaultState } from '../data/defaultQuestions';
+import { DEFAULT_QUESTIONS, createDefaultState } from '../data/defaultQuestions';
 import type { AppState } from '../types/olympiad';
 
 const STORAGE_KEY = 'hassad-olympiad-v2';
+const CURRENT_BANK_VERSION = 2;
 
 export function isValidState(value: unknown): value is AppState {
   const s = value as Partial<AppState> | null;
@@ -18,16 +19,31 @@ export function isValidState(value: unknown): value is AppState {
 }
 
 function migrateState(state: AppState): AppState {
-  if (state.settings.presenter === 'الأستاذ هيثم') {
-    return {
-      ...state,
+  let next = state;
+  if (next.settings.presenter === 'الأستاذ هيثم') {
+    next = {
+      ...next,
       settings: {
-        ...state.settings,
+        ...next.settings,
         presenter: 'الأستاذ هيثم حموي',
       },
     };
   }
-  return state;
+  if ((next.questionBankVersion ?? 1) < CURRENT_BANK_VERSION) {
+    next = {
+      ...next,
+      questionBankVersion: CURRENT_BANK_VERSION,
+      questions: DEFAULT_QUESTIONS.map((q) => ({ ...q })),
+    };
+  }
+  if (!Array.isArray(next.plans) || !Array.isArray(next.planTemplates)) {
+    next = {
+      ...next,
+      plans: Array.isArray(next.plans) ? next.plans : [],
+      planTemplates: Array.isArray(next.planTemplates) ? next.planTemplates : [],
+    };
+  }
+  return next;
 }
 
 export function parseStoredState(raw: string | null): AppState | null {
