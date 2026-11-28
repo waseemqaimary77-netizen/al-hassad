@@ -11,7 +11,7 @@ import type {
 export const ASSETS = {
   schoolLogo: '/assets/images/school-logo.webp',
   committeeLogo: '/assets/images/committee-logo.webp',
-  presenter: '/assets/images/presenter.webp',
+  presenter: '/assets/images/presenter-v2.webp',
 } as const;
 
 export const CATEGORIES: { id: CategoryId; name: string; range: string; grades: Grade[] }[] = [
